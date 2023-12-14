@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Chat with AI";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <textarea id="userInput" rows="4" cols="50"></textarea>
+    <button id="sendButton">Send</button>
+</div>
+
+<div id="responseContainer"></div>
+
+@section scripts{
+    <script src="~/path/to/your/jquery.js"></script>
+    <script>
+        $(function() {
+            $("#sendButton").click(function() {
+                var userInput = $("#userInput").val();
+                $.ajax({
+                    url: '@Url.Action("Chat", "Home")',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ input: userInput }),
+                    success: function(response) {
+                        $("#responseContainer").html(response);
+                    },
+                    error: function(xhr, status, error) {
+                        // 显示更详细的错误信息
+                        var errorMessage = xhr.status + ': ' + xhr.statusText;
+                        $("#responseContainer").html("Error - " + errorMessage);
+                    }
+                });
+            });
+        });
+    </script>
+}
+
