@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 using System;
 using System.Collections.Generic;
@@ -13,8 +13,7 @@ namespace Web5Application.Service
     public class ChatService
     {
         private readonly HttpClient _httpClient;
-        private readonly string _apiUrl = "https://api.openai.com/v1/engines/davinci/completions"; // 示例 URL
-        private readonly string _apiKey = "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";
+        private readonl
 
         public ChatService()
         {
